@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="cs" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ceník — BitCore | Tvorba webových stránek | Kutná Hora</title>
+<meta name="description" content="Ceník tvorby webových stránek BitCore. Studentské ceny, profesionální výsledky. Landing page od 4 500 Kč, vícestrankový web od 10 000 Kč."/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#080A0F"/>
+<link rel="canonical" href="https://bitcore-web.netlify.app/cenik.html"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{base:"#080A0F",accent:"#00FFAA",accent2:"#0066FF"},fontFamily:{sans:["Space Grotesk","ui-sans-serif"],mono:["Space Mono","ui-monospace"]}}}}
+</script>
+<style>
+*{box-sizing:border-box}
+::selection{background:rgba(0,255,170,.2)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#080A0F}::-webkit-scrollbar-thumb{background:#1e2530;border-radius:4px}
+.bg-grid{background-image:linear-gradient(to right,rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.nav-blur{backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(8,10,15,.85)}
+.hero-glow{background:radial-gradient(ellipse 700px 400px at 20% 50%,rgba(0,255,170,.07),transparent),radial-gradient(ellipse 600px 400px at 80% 50%,rgba(0,102,255,.07),transparent)}
+.card{background:rgba(19,24,32,.9);border:1px solid rgba(255,255,255,.07);border-radius:16px;backdrop-filter:blur(12px);transition:all .3s cubic-bezier(.4,0,.2,1)}
+.card:hover{border-color:rgba(0,255,170,.2);transform:translateY(-2px);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 0 1px rgba(0,255,170,.12)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.06em;border:1px solid rgba(0,255,170,.25);background:rgba(0,255,170,.08);color:#00FFAA}
+.tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-family:"Space Mono",monospace;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.btn-p{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 24px;border-radius:10px;font-weight:600;font-size:14px;background:linear-gradient(135deg,#00FFAA,#00cc88);color:#080A0F;transition:all .2s;box-shadow:0 4px 20px rgba(0,255,170,.25)}
+.btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,255,170,.35)}
+.btn-s{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 24px;border-radius:10px;font-weight:600;font-size:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.85);transition:all .2s}
+.btn-s:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+.slbl{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:linear-gradient(90deg,#00FFAA,#4d9eff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.alink{position:relative;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
+.alink::after{content:"";position:absolute;bottom:-1px;left:0;width:0;height:1px;background:#00FFAA;transition:width .25s}
+.alink:hover{color:#fff}.alink:hover::after{width:100%}
+.grad{background:linear-gradient(135deg,#00FFAA 0%,#4d9eff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.statnum{font-family:"Space Mono",monospace;font-weight:700;background:linear-gradient(135deg,#00FFAA,#4d9eff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.reveal{opacity:1;transform:none;transition:opacity .7s,transform .7s}
+.js-loaded .reveal{opacity:0;transform:translateY(24px)}
+.js-loaded .reveal.in{opacity:1;transform:none}
+
+/* ─── PRICING CARDS BASE ─── */
+.price-card{
+  background:rgba(19,24,32,.9);
+  border-radius:20px;
+  backdrop-filter:blur(12px);
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+.price-card:hover{transform:translateY(-4px)}
+
+/* ─── SILVER BORDER — Starter ─── */
+.tier-silver{
+  border:1.5px solid rgba(192,192,210,.45);
+  box-shadow:0 0 18px rgba(180,180,200,.08),inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.tier-silver:hover{
+  border-color:rgba(220,220,240,.7);
+  box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 24px rgba(192,192,220,.12);
+}
+
+/* ─── GOLD BORDER — Business ─── */
+.tier-gold{
+  border:1.5px solid transparent;
+  background-clip:padding-box;
+  background-color:rgba(22,26,20,.97);
+  box-shadow:0 0 0 1.5px rgba(212,175,55,.55),0 0 30px rgba(212,175,55,.1),inset 0 0 0 1px rgba(255,210,60,.04);
+}
+.tier-gold:hover{
+  box-shadow:0 0 0 1.5px rgba(255,210,60,.8),0 24px 64px rgba(0,0,0,.5),0 0 40px rgba(212,175,55,.2);
+}
+
+/* ─── DIAMOND BORDER — Custom ─── */
+@keyframes diamond-spin{to{--angle:360deg}}
+@property --angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes border-rotate{0%{--angle:0deg}100%{--angle:360deg}}
+
+.tier-diamond{
+  border:2px solid transparent;
+  background:rgba(16,20,30,.97);
+  background-clip:padding-box;
+  position:relative;
+  overflow:visible;
+}
+.tier-diamond::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:22px;
+  padding:2px;
+  background:conic-gradient(
+    from var(--angle,0deg),
+    #b9f2ff,#7df9ff,#a8edea,#fed6e3,#a18cd1,#fbc2eb,
+    #ff9a9e,#fad0c4,#ffd700,#fffacd,#b9f2ff
+  );
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  animation:border-rotate 4s linear infinite;
+  z-index:0;
+}
+.tier-diamond:hover::before{animation-duration:1.5s}
+.tier-diamond > *{position:relative;z-index:1}
+
+/* ─── DIAMOND TEXT — color cycling ─── */
+@keyframes diamond-text{
+  0%  {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.diamond-text{
+  background:linear-gradient(90deg,
+    #b9f2ff,#7df9ff,#a8edea,#fed6e3,#a18cd1,#fbc2eb,
+    #ff9a9e,#ffd700,#fffacd,#b9f2ff,#7df9ff
+  );
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:diamond-text 5s ease infinite;
+}
+.diamond-badge{
+  background:linear-gradient(90deg,
+    #b9f2ff,#a18cd1,#fbc2eb,#ffd700,#b9f2ff
+  );
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:diamond-text 4s ease infinite;
+  font-family:"Space Mono",monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+/* "od" label */
+.price-od{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2px}
+
+/* Feature check */
+.feat{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,.62);line-height:1.5}
+.feat-icon{width:18px;height:18px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:11px}
+.feat-icon.yes{background:rgba(0,255,170,.1);border:1px solid rgba(0,255,170,.2);color:#00FFAA}
+.feat-icon.no{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.2)}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06)}
+.faq-btn{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;padding:18px 0;font-size:14px;font-weight:500;color:rgba(255,255,255,.82);background:none;border:none;cursor:pointer;gap:12px;transition:color .2s}
+.faq-btn:hover{color:#fff}
+.faq-btn svg{flex-shrink:0;transition:transform .3s;color:rgba(255,255,255,.3)}
+.faq-btn.open svg{transform:rotate(45deg);color:#00FFAA}
+.faq-body{display:none;padding-bottom:18px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.48)}
+.faq-body.open{display:block}
+
+/* Addons */
+.addon{background:rgba(19,24,32,.9);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px;transition:all .25s}
+.addon:hover{border-color:rgba(0,255,170,.18);background:rgba(19,28,24,.95)}
+
+.contact-card{border:1px solid rgba(0,255,170,.2);border-radius:20px;background:linear-gradient(135deg,rgba(0,255,170,.04),rgba(0,102,255,.04));padding:48px 32px}
+
+#mob-menu{display:none}
+#mob-menu.open{display:flex}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ─── WHY US — responsive fix ─── */
+.why-us-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+}
+@media(min-width:640px){
+  .why-us-grid{
+    grid-template-columns:1fr 2fr;
+    gap:32px;
+    align-items:center;
+  }
+}
+.why-stats-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+@media(min-width:480px){
+  .why-stats-grid{
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+  }
+}
+.why-stat-num{
+  font-family:"Space Mono",monospace;
+  font-weight:700;
+  background:linear-gradient(135deg,#00FFAA,#4d9eff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  line-height:1;
+  font-size:2rem;
+  display:block;
+  margin-bottom:6px;
+}
+.why-stat-label{
+  font-size:11px;
+  color:rgba(255,255,255,.38);
+  line-height:1.4;
+}
+/* Single-col mobile stat row layout */
+@media(max-width:479px){
+  .why-stats-grid .text-center{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-align:left;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .why-stats-grid .text-center:last-child{
+    border-bottom:none;
+  }
+  .why-stat-num{
+    font-size:1.6rem;
+    flex-shrink:0;
+    min-width:80px;
+    margin-bottom:0;
+  }
+  .why-stat-label{
+    font-size:12px;
+  }
+}
+
+/* Mobile nav fix */
+@media(max-width:640px){
+  .contact-card{padding:28px 18px}
+  .price-card{border-radius:16px}
+  .tier-diamond::before{border-radius:18px}
+  .faq-btn{font-size:13px;padding:15px 0}
+  .addon{padding:16px}
+}
+</style>
+</head>
+<body class="min-h-screen font-sans antialiased" style="background:#080A0F;color:#fff">
+
+<!-- BG -->
+<div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0">
+  <div class="absolute inset-0 bg-grid"></div>
+  <div class="hero-glow absolute inset-0"></div>
+</div>
+
+<!-- NAV -->
+<header class="sticky top-0 z-50">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-3">
+    <div class="nav-blur flex items-center justify-between rounded-2xl border border-white/[0.06] px-5 py-3">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center font-mono text-xs font-bold" style="background:linear-gradient(135deg,rgba(0,255,170,.12),rgba(0,102,255,.12));border:1px solid rgba(0,255,170,.2);color:#00FFAA">BC</div>
+        <div>
+          <div class="font-mono text-sm font-bold text-white">BitCore</div>
+          <div class="text-xs" style="color:rgba(255,255,255,.38)">Adam &amp; Ondřej · VOŠ SPŠ IT</div>
+        </div>
+      </a>
+      <nav class="hidden sm:flex items-center gap-1">
+        <a href="index.html#showroom" class="alink px-3 py-2 rounded-lg text-sm hover:bg-white/5 transition-colors">Showroom</a>
+        <a href="index.html#tym" class="alink px-3 py-2 rounded-lg text-sm hover:bg-white/5 transition-colors">Tým</a>
+        <a href="index.html#pristup" class="alink px-3 py-2 rounded-lg text-sm hover:bg-white/5 transition-colors">Přístup</a>
+        <a href="cenik.html" class="alink px-3 py-2 rounded-lg text-sm hover:bg-white/5 transition-colors" style="color:#00FFAA">Ceník</a>
+        <a href="index.html#kontakt" class="btn-p ml-3 text-xs px-4 py-2">Kontakt</a>
+      </nav>
+      <button class="sm:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-white/10" onclick="document.getElementById('mob-menu').classList.toggle('open')">
+        <span class="w-4 h-px bg-white/60"></span><span class="w-4 h-px bg-white/60"></span>
+      </button>
+    </div>
+    <div id="mob-menu" class="nav-blur flex-col border border-white/[0.06] rounded-2xl mt-1 p-4 gap-1">
+      <a href="index.html#showroom" class="block px-3 py-2.5 rounded-xl text-sm text-white/70 hover:bg-white/5 hover:text-white" onclick="document.getElementById('mob-menu').classList.remove('open')">Showroom</a>
+      <a href="index.html#tym" class="block px-3 py-2.5 rounded-xl text-sm text-white/70 hover:bg-white/5 hover:text-white" onclick="document.getElementById('mob-menu').classList.remove('open')">Tým</a>
+      <a href="index.html#pristup" class="block px-3 py-2.5 rounded-xl text-sm text-white/70 hover:bg-white/5 hover:text-white" onclick="document.getElementById('mob-menu').classList.remove('open')">Přístup</a>
+      <a href="cenik.html" class="block px-3 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/5" style="color:#00FFAA" onclick="document.getElementById('mob-menu').classList.remove('open')">Ceník</a>
+      <a href="index.html#kontakt" class="btn-p w-full justify-center text-sm mt-2" onclick="document.getElementById('mob-menu').classList.remove('open')">Kontakt</a>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="relative z-10">
+
+<!-- HERO -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pt-16 pb-12">
+  <div class="reveal flex flex-col items-center text-center gap-5">
+    <div class="badge">
+      <span style="width:6px;height:6px;border-radius:50%;background:#00FFAA;display:inline-block;animation:pulse 2s infinite"></span>
+      Studentské ceny · Profesionální výsledky
+    </div>
+    <h1 class="text-4xl sm:text-6xl font-bold tracking-tight leading-[1.1] max-w-3xl">
+      Transparentní<br/>
+      <span class="grad">ceník.</span>
+    </h1>
+    <p class="text-base sm:text-lg max-w-xl leading-relaxed" style="color:rgba(255,255,255,.52)">
+      Žádné skryté poplatky. Víte přesně, za co platíte — a proč to stojí méně než u agentury.
+    </p>
+    <div class="flex flex-wrap justify-center gap-2">
+      <span class="tag">Bez skrytých poplatků</span>
+      <span class="tag">Orientační ceny</span>
+      <span class="tag">Rychlé dodání</span>
+      <span class="tag">Revize v ceně</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING CARDS -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+  <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- STARTER — silver -->
+    <div class="price-card tier-silver p-6 sm:p-7">
+      <div class="slbl mb-4">Starter</div>
+      <div class="price-od">od</div>
+      <div class="mb-1 flex items-baseline gap-1.5 flex-wrap">
+        <span class="statnum text-4xl">4 500</span>
+        <span class="text-sm" style="color:rgba(255,255,255,.38)">Kč</span>
+      </div>
+      <div class="text-xs font-mono mb-5" style="color:rgba(255,255,255,.3)">jednorázově · bez DPH</div>
+      <div class="font-semibold text-sm mb-1">Landing page</div>
+      <p class="text-xs leading-relaxed mb-6" style="color:rgba(255,255,255,.4)">Ideální pro živnostníky, freelancery nebo nové projekty, které potřebují rychle a čistě prezentovat svou nabídku.</p>
+      <div class="flex flex-col gap-3 mb-8">
+        <div class="feat"><span class="feat-icon yes">✓</span><span>1 stránka (scroll-layout)</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Responzivní design (mobile-first)</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>SEO základy (meta, OG, schema)</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Kontaktní sekce</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>2 kola revizí</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Dodání do 7 dní</span></div>
+        <div class="feat"><span class="feat-icon no">—</span><span style="color:rgba(255,255,255,.3)">Vícejazyčnost</span></div>
+        <div class="feat"><span class="feat-icon no">—</span><span style="color:rgba(255,255,255,.3)">CMS / admin panel</span></div>
+        <div class="feat"><span class="feat-icon no">—</span><span style="color:rgba(255,255,255,.3)">E-shop</span></div>
+      </div>
+      <div class="mt-auto">
+        <a href="index.html#kontakt" class="btn-s w-full text-sm">Mám zájem</a>
+      </div>
+    </div>
+
+    <!-- BUSINESS — gold -->
+    <div class="price-card tier-gold p-6 sm:p-7 relative">
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap">
+        <span style="display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.08em;background:linear-gradient(135deg,#FFD700,#FFA500,#FFD700);color:#1a0e00;box-shadow:0 2px 12px rgba(212,175,55,.4)">★ NEJOBLÍBENĚJŠÍ</span>
+      </div>
+      <div class="slbl mb-4">Business</div>
+      <div class="price-od">od</div>
+      <div class="mb-1 flex items-baseline gap-1.5 flex-wrap">
+        <span class="statnum text-4xl">10 000</span>
+        <span class="text-sm" style="color:rgba(255,255,255,.38)">Kč</span>
+      </div>
+      <div class="text-xs font-mono mb-5" style="color:rgba(255,255,255,.3)">jednorázově · bez DPH</div>
+      <div class="font-semibold text-sm mb-1">Vícestrankový web</div>
+      <p class="text-xs leading-relaxed mb-6" style="color:rgba(255,255,255,.4)">Pro firmy a podnikatele, kteří potřebují plnohodnotnou prezentaci — od úvodní stránky přes o nás až po kontakt.</p>
+      <div class="flex flex-col gap-3 mb-8">
+        <div class="feat"><span class="feat-icon yes">✓</span><span>3–6 stránek dle dohody</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Responzivní design (mobile-first)</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Pokročilé SEO + sitemap + robots.txt</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Kontaktní formulář</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Google Analytics integrace</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>3 kola revizí</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Dodání do 14 dní</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Základní animace a interakce</span></div>
+        <div class="feat"><span class="feat-icon no">—</span><span style="color:rgba(255,255,255,.3)">CMS / admin panel</span></div>
+      </div>
+      <div class="mt-auto">
+        <a href="index.html#kontakt" class="btn-p w-full text-sm">Mám zájem</a>
+      </div>
+    </div>
+
+    <!-- CUSTOM — diamond -->
+    <div class="price-card tier-diamond p-6 sm:p-7">
+      <div class="diamond-badge mb-4">Custom</div>
+      <div class="price-od" style="-webkit-text-fill-color:rgba(255,255,255,.35)">cena</div>
+      <div class="mb-1 flex items-baseline gap-1.5 flex-wrap">
+        <span class="diamond-text" style="font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(1.2rem,3.5vw,2.25rem);line-height:1">Dle rozsahu</span>
+      </div>
+      <div class="text-xs font-mono mb-5" style="color:rgba(255,255,255,.3)">individuální poptávka · bez DPH</div>
+      <div class="font-semibold text-sm mb-1">
+        <span class="diamond-text">Komplexní řešení</span>
+      </div>
+      <p class="text-xs leading-relaxed mb-6" style="color:rgba(255,255,255,.4)">Webová aplikace, e-shop, vlastní CMS nebo projekt na míru. Cena a rozsah závisí na konkrétním zadání.</p>
+      <div class="flex flex-col gap-3 mb-8">
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Vše z Business plánu</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>CMS / správa obsahu</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>PHP backend, databáze (SQLite/MySQL)</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Autentizace a admin rozhraní</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Vícejazyčnost</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>5+ kol revizí v průběhu projektu</span></div>
+        <div class="feat"><span class="feat-icon yes">✓</span><span>Individuální časový plán</span></div>
+      </div>
+      <div class="mt-auto">
+        <a href="index.html#kontakt" class="btn-s w-full text-sm" style="border-color:rgba(180,160,255,.25)">Nezávazná poptávka</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Note -->
+  <div class="reveal mt-5 text-center">
+    <p class="text-xs" style="color:rgba(255,255,255,.3)">Ceny jsou orientační a mohou se lišit dle rozsahu projektu. Vždy se domluvíme individuálně.</p>
+  </div>
+</section>
+
+<!-- ADDONS -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+  <div class="reveal mb-8">
+    <div class="slbl mb-3">Doplňky</div>
+    <h2 class="text-2xl sm:text-3xl font-bold">Volitelné služby</h2>
+    <p class="mt-2 max-w-lg text-sm" style="color:rgba(255,255,255,.48)">Přidejte ke svému balíčku cokoliv z níže — nebo si napište o vlastní požadavek.</p>
+  </div>
+  <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+    <div class="addon">
+      <div class="flex items-center gap-2 mb-1">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background:rgba(0,255,170,.1);border:1px solid rgba(0,255,170,.2);color:#00FFAA">🌐</div>
+        <span class="font-semibold text-sm">Doména + hosting</span>
+      </div>
+      <div class="statnum text-xl">od 1 500 <span class="text-xs font-sans font-normal" style="color:rgba(255,255,255,.4);-webkit-text-fill-color:rgba(255,255,255,.4)">Kč / rok</span></div>
+      <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.38)">Registrace domény, nastavení DNS a nasazení na hosting — vše vyřídíme za vás.</p>
+    </div>
+
+    <div class="addon">
+      <div class="flex items-center gap-2 mb-1">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background:rgba(0,102,255,.1);border:1px solid rgba(0,102,255,.2);color:#4d9eff">🔍</div>
+        <span class="font-semibold text-sm">SEO audit</span>
+      </div>
+      <div class="statnum text-xl">od 1 900 <span class="text-xs font-sans font-normal" style="color:rgba(255,255,255,.4);-webkit-text-fill-color:rgba(255,255,255,.4)">Kč</span></div>
+      <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.38)">Kompletní analýza existujícího webu — technické SEO, rychlost, přístupnost a doporučení.</p>
+    </div>
+
+    <div class="addon">
+      <div class="flex items-center gap-2 mb-1">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background:rgba(0,255,170,.1);border:1px solid rgba(0,255,170,.2);color:#00FFAA">✏️</div>
+        <span class="font-semibold text-sm">Copywriting</span>
+      </div>
+      <div class="statnum text-xl">od 990 <span class="text-xs font-sans font-normal" style="color:rgba(255,255,255,.4);-webkit-text-fill-color:rgba(255,255,255,.4)">Kč / stránka</span></div>
+      <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.38)">Napíšeme texty pro váš web — přesvědčivé, lidské a optimalizované pro vyhledávače.</p>
+    </div>
+
+    <div class="addon">
+      <div class="flex items-center gap-2 mb-1">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background:rgba(0,102,255,.1);border:1px solid rgba(0,102,255,.2);color:#4d9eff">🛠️</div>
+        <span class="font-semibold text-sm">Údržba webu</span>
+      </div>
+      <div class="statnum text-xl">od 500 <span class="text-xs font-sans font-normal" style="color:rgba(255,255,255,.4);-webkit-text-fill-color:rgba(255,255,255,.4)">Kč / měs.</span></div>
+      <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.38)">Drobné úpravy obsahu, aktualizace a monitoring dostupnosti — vše bez starostí.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US — FIXED RESPONSIVE -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+  <div class="reveal card p-7 sm:p-10">
+    <div class="why-us-grid">
+
+      <!-- left text column -->
+      <div>
+        <div class="slbl mb-3">Proč levněji?</div>
+        <h3 class="text-xl font-bold mb-3">Studenti, ne agentura.</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.5)">Nemáme kancelář ani recepci. Máme ale nadšení, moderní stack a AI workflow, který nám šetří čas — a tím i vaše peníze.</p>
+      </div>
+
+      <!-- right stats grid -->
+      <div class="why-stats-grid">
+        <div class="text-center px-2">
+          <span class="why-stat-num">↓ 60%</span>
+          <div class="why-stat-label">Nižší cena oproti průměrné agentuře</div>
+        </div>
+        <div class="text-center px-2">
+          <span class="why-stat-num">7–14</span>
+          <div class="why-stat-label">Dní průměrná doba dodání</div>
+        </div>
+        <div class="text-center px-2">
+          <span class="why-stat-num">100%</span>
+          <div class="why-stat-label">Zodpovědnost za kvalitu na nás</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="mx-auto max-w-3xl px-4 sm:px-6 py-12">
+  <div class="reveal mb-8">
+    <div class="slbl mb-3">FAQ</div>
+    <h2 class="text-2xl sm:text-3xl font-bold">Časté dotazy</h2>
+  </div>
+  <div class="reveal">
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Jak probíhá spolupráce od začátku do konce?
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-body">Napíšete nám, domluvíme si bezplatnou konzultaci (email nebo video call). Ujasníme si rozsah, design a obsah. Pošleme vám cenovou nabídku a po odsouhlasení pustíme se do práce. Průběžně vás informujeme a na konci dostanete hotový web připravený k nasazení.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Co potřebuji připravit, než se na vás obrátím?
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-body">Ideálně představu o tom, co web má dělat a pro koho je určený. Pokud máte logo, texty nebo fotky — skvěle. Pokud ne, nevadí, pomůžeme vám vše připravit (nebo doporučíme, kde sehnat materiály).</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Jsou v ceně revize?
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-body">Ano. Starter zahrnuje 2 kola revizí, Business 3 kola. U Custom plánu pracujeme agilně — zpětnou vazbu zapracováváme průběžně.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Co když chci web, ale nevím, jaký balíček zvolit?
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-body">Napište nám a my vám doporučíme nejvhodnější variantu. Nezávazná konzultace je zdarma — rádi si promluvíme o vašem projektu a navrhneme řešení přesně pro vás.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Jak a kdy se platí?
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-body">Platba probíhá ve dvou splátkách: 50 % předem (před zahájením práce), 50 % po finálním předání webu. Platbu přijímáme bankovním převodem. Vystavujeme doklad o platbě.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Používáte šablony nebo WordPress?
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-body">Ne. Každý web píšeme od základu v HTML, CSS a JavaScriptu (případně PHP pro backend). Žádné page-buildery ani předpřipravené šablony — výsledek je rychlý, čistý a 100 % váš.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA KONTAKT -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 py-12 pb-24">
+  <div class="reveal contact-card text-center">
+    <div class="slbl mb-4">Jdeme do toho?</div>
+    <h2 class="text-3xl sm:text-4xl font-bold">Napište nám.</h2>
+    <p class="mt-3 max-w-md mx-auto text-sm sm:text-base" style="color:rgba(255,255,255,.48)">Nezávazná konzultace je zdarma. Odpovídáme do 24 hodin.</p>
+    <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
+      <a href="mailto:bitcore.devv@gmail.com" class="btn-p text-sm sm:text-base px-6 sm:px-8 py-4 rounded-xl inline-flex items-center justify-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        bitcore.devv@gmail.com
+      </a>
+      <a href="index.html" class="btn-s text-sm sm:text-base px-6 sm:px-8 py-4 rounded-xl inline-flex items-center justify-center gap-3" style="color:rgba(255,255,255,.85)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Zpět na hlavní stránku
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="relative z-10 border-t border-white/[0.05]">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <div class="w-7 h-7 rounded-lg flex items-center justify-center font-mono text-[10px] font-bold" style="background:rgba(0,255,170,.1);border:1px solid rgba(0,255,170,.2);color:#00FFAA">BC</div>
+      <span class="text-xs" style="color:rgba(255,255,255,.32)">© <span id="yr"></span> BitCore — Adam Klorus &amp; Ondřej Douda</span>
+    </div>
+    <a href="mailto:bitcore.devv@gmail.com" class="text-xs font-mono transition-colors" style="color:rgba(255,255,255,.28)" onmouseover="this.style.color='#00FFAA'" onmouseout="this.style.color='rgba(255,255,255,.28)'">bitcore.devv@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("yr").textContent = new Date().getFullYear();
+document.documentElement.classList.add("js-loaded");
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); ro.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll(".reveal").forEach(el => ro.observe(el));
+
+function toggleFaq(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains("open");
+  document.querySelectorAll(".faq-btn.open").forEach(b => {
+    b.classList.remove("open");
+    b.nextElementSibling.classList.remove("open");
+  });
+  if (!isOpen) {
+    btn.classList.add("open");
+    body.classList.add("open");
+  }
+}
+</script>
+</body>
+</html>

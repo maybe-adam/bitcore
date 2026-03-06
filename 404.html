@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="cs" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>404 — Stránka nenalezena | BitCore</title>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="theme-color" content="#080A0F"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{base:"#080A0F",accent:"#00FFAA",accent2:"#0066FF"},fontFamily:{sans:["Space Grotesk","ui-sans-serif"],mono:["Space Mono","ui-monospace"]}}}}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+::selection{background:rgba(0,255,170,.2)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#080A0F}
+::-webkit-scrollbar-thumb{background:#1e2530;border-radius:4px}
+body{background:#080A0F;color:#fff;font-family:"Space Grotesk","ui-sans-serif",sans-serif;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+.bg-grid{background-image:linear-gradient(to right,rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.nav-blur{backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(8,10,15,.85)}
+.grad{background:linear-gradient(135deg,#00FFAA 0%,#4d9eff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.btn-s{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 24px;border-radius:10px;font-weight:600;font-size:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.85);transition:all .2s;text-decoration:none}
+.btn-s:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2)}
+.alink{position:relative;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
+.alink::after{content:"";position:absolute;bottom:-1px;left:0;width:0;height:1px;background:#00FFAA;transition:width .25s}
+.alink:hover{color:#fff}
+.alink:hover::after{width:100%}
+
+/* GLITCH */
+.glitch-wrap{position:relative;display:inline-block;line-height:1}
+.glitch-num{font-family:"Space Mono",monospace;font-size:clamp(100px,22vw,200px);font-weight:700;background:linear-gradient(135deg,#00FFAA,#4d9eff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;display:block;letter-spacing:-4px;user-select:none}
+.glitch-num::before,.glitch-num::after{content:"404";position:absolute;top:0;left:0;right:0;font-family:"Space Mono",monospace;font-size:inherit;font-weight:700;letter-spacing:-4px;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.glitch-num::before{background:linear-gradient(135deg,#ff3366,#ff6b35);-webkit-background-clip:text;clip-path:polygon(0 0,100% 0,100% 38%,0 38%);animation:glitch-top 3.5s infinite linear;opacity:.7}
+.glitch-num::after{background:linear-gradient(135deg,#00FFAA,#0066FF);-webkit-background-clip:text;clip-path:polygon(0 62%,100% 62%,100% 100%,0 100%);animation:glitch-bot 3.5s infinite linear;opacity:.6}
+@keyframes glitch-top{0%,85%,100%{transform:translate(0,0);opacity:0}86%{transform:translate(-4px,-2px);opacity:.7}88%{transform:translate(4px,1px);opacity:.7}90%{transform:translate(-2px,0);opacity:.7}92%{transform:translate(0,0);opacity:0}}
+@keyframes glitch-bot{0%,85%,100%{transform:translate(0,0);opacity:0}87%{transform:translate(4px,2px);opacity:.6}89%{transform:translate(-3px,-1px);opacity:.6}91%{transform:translate(2px,0);opacity:.6}93%{transform:translate(0,0);opacity:0}}
+
+/* LOCK */
+.lock-wrap{position:relative;width:120px;height:120px;margin:0 auto}
+.lock-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent;background:conic-gradient(from 0deg,rgba(0,255,170,.6),rgba(0,102,255,.4),rgba(0,255,170,.1),rgba(0,255,170,.6)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:ring-spin 6s linear infinite}
+.lock-ring-2{position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(0,255,170,.1);animation:ring-spin 10s linear infinite reverse}
+.lock-icon-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.lock-svg{animation:lock-pulse 2.5s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(0,255,170,.4))}
+@keyframes ring-spin{to{transform:rotate(360deg)}}
+@keyframes lock-pulse{0%,100%{filter:drop-shadow(0 0 8px rgba(0,255,170,.3));transform:scale(1)}50%{filter:drop-shadow(0 0 20px rgba(0,255,170,.7));transform:scale(1.06)}}
+
+/* TERMINAL */
+.terminal{background:rgba(0,0,0,.5);border:1px solid rgba(0,255,170,.15);border-radius:12px;padding:20px 24px;font-family:"Space Mono",monospace;font-size:12px;max-width:480px;width:100%;text-align:left;position:relative;overflow:hidden}
+.terminal::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#00FFAA,#0066FF,transparent);border-radius:12px 12px 0 0}
+.t-header{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.t-line{display:flex;gap:8px;margin-bottom:6px;color:rgba(255,255,255,.5);line-height:1.6}
+.t-pr{color:rgba(0,255,170,.7);flex-shrink:0}
+.t-cmd{color:rgba(255,255,255,.75)}
+.t-err{color:rgba(255,100,100,.7)}
+.t-ok{color:rgba(0,255,170,.7)}
+.t-warn{color:rgba(255,200,50,.7)}
+.cursor{display:inline-block;width:8px;height:14px;background:#00FFAA;animation:blink .8s step-end infinite;vertical-align:text-bottom;margin-left:2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* STATUS BADGE */
+.status-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.06em;border:1px solid rgba(255,100,100,.3);background:rgba(255,60,60,.08);color:rgba(255,120,120,.9)}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#ff4466;animation:pulse-red 1.5s ease-in-out infinite}
+@keyframes pulse-red{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,68,102,.4)}50%{opacity:.6;box-shadow:0 0 0 4px rgba(255,68,102,0)}}
+
+/* POLL */
+.poll-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);display:inline-block;flex-shrink:0;transition:background .4s,box-shadow .4s}
+.countdown{font-family:"Space Mono",monospace;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.05em}
+
+/* SCANLINES */
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px)}
+
+/* FADE IN */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-1{animation:fadeUp .6s ease both}
+.fade-2{animation:fadeUp .6s .15s ease both}
+.fade-3{animation:fadeUp .6s .3s ease both}
+.fade-4{animation:fadeUp .6s .45s ease both}
+.fade-5{animation:fadeUp .6s .6s ease both}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(4,6,10,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .35s ease}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{position:relative;width:100%;max-width:400px;border-radius:24px;padding:40px 32px 32px;text-align:center;opacity:0;transform:translateY(28px) scale(.96);transition:opacity .4s ease,transform .45s cubic-bezier(.34,1.56,.64,1);overflow:hidden}
+.modal-overlay.open .modal-box{opacity:1;transform:translateY(0) scale(1)}
+.mbox-ask{background:rgba(16,20,28,.98);border:1px solid rgba(255,200,60,.2);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 60px rgba(255,200,60,.05)}
+.mbox-go{background:rgba(16,20,28,.98);border:1px solid rgba(0,255,170,.25);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 60px rgba(0,255,170,.08)}
+.mbar{position:absolute;top:0;left:0;right:0;height:2px}
+.mbar-ask{background:linear-gradient(90deg,#FFD700,#ff9a00,transparent)}
+.mbar-go{background:linear-gradient(90deg,#00FFAA,#0066FF,transparent)}
+.micon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.micon-ask{background:rgba(255,200,60,.07);border:1.5px solid rgba(255,200,60,.25);animation:ask-glow 2s ease-in-out infinite}
+.micon-go{background:rgba(0,255,170,.08);border:1.5px solid rgba(0,255,170,.3);animation:go-glow 2s ease-in-out infinite}
+@keyframes ask-glow{0%,100%{box-shadow:0 0 16px rgba(255,200,60,.08)}50%{box-shadow:0 0 32px rgba(255,200,60,.22)}}
+@keyframes go-glow{0%,100%{box-shadow:0 0 20px rgba(0,255,170,.1)}50%{box-shadow:0 0 40px rgba(0,255,170,.3)}}
+.mlabel{font-family:"Space Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}
+.mlabel-ask{color:rgba(255,200,60,.7)}
+.mlabel-go{background:linear-gradient(90deg,#00FFAA,#4d9eff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.mtitle{font-size:20px;font-weight:700;color:#fff;margin-bottom:10px}
+.mdesc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:28px}
+.mbtns{display:flex;gap:10px}
+.mbtn-no{flex:1;padding:11px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:rgba(255,255,255,.7);font-weight:600;font-size:13px;font-family:"Space Grotesk",sans-serif;cursor:pointer;transition:background .2s}
+.mbtn-no:hover{background:rgba(255,255,255,.09)}
+.mbtn-yes{flex:1;padding:11px;border-radius:10px;border:none;background:linear-gradient(135deg,#FFD700,#ff9a00);color:#1a0e00;font-weight:700;font-size:13px;font-family:"Space Grotesk",sans-serif;cursor:pointer;transition:transform .2s;box-shadow:0 4px 16px rgba(255,180,0,.25)}
+.mbtn-yes:hover{transform:translateY(-1px)}
+.mbtn-go{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 24px;border-radius:10px;border:none;cursor:pointer;font-weight:600;font-size:14px;font-family:"Space Grotesk",sans-serif;background:linear-gradient(135deg,#00FFAA,#00cc88);color:#080A0F;box-shadow:0 4px 20px rgba(0,255,170,.25);transition:all .2s}
+.mbtn-go:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,255,170,.35)}
+.prog-track{height:3px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;margin-bottom:24px}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,#00FFAA,#4d9eff);border-radius:99px;transition:width 3s linear}
+.popup-num{color:#00FFAA;font-weight:700;font-family:"Space Mono",monospace}
+</style>
+</head>
+<body>
+
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- BG -->
+<div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0">
+  <div class="absolute inset-0 bg-grid"></div>
+  <div class="absolute inset-0" style="background:radial-gradient(ellipse 700px 500px at 50% 40%,rgba(0,255,170,.06),transparent)"></div>
+  <div class="absolute inset-0" style="background:radial-gradient(ellipse 500px 400px at 80% 80%,rgba(0,102,255,.05),transparent)"></div>
+</div>
+
+<!-- NAV -->
+<header class="sticky top-0 z-50">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-3">
+    <div class="nav-blur flex items-center justify-between rounded-2xl border border-white/[0.06] px-5 py-3">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center font-mono text-xs font-bold" style="background:linear-gradient(135deg,rgba(0,255,170,.12),rgba(0,102,255,.12));border:1px solid rgba(0,255,170,.2);color:#00FFAA">BC</div>
+        <div>
+          <div class="font-mono text-sm font-bold text-white">BitCore</div>
+          <div class="text-xs" style="color:rgba(255,255,255,.38)">Adam &amp; Ondřej · VOŠ SPŠ IT</div>
+        </div>
+      </a>
+      <a href="index.html" class="btn-s text-xs px-4 py-2 gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Zpět domů
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="relative z-10 flex-1 flex items-center justify-center px-4 py-16">
+  <div class="flex flex-col items-center text-center gap-8 w-full max-w-2xl">
+
+    <div class="lock-wrap fade-1">
+      <div class="lock-ring"></div>
+      <div class="lock-ring-2"></div>
+      <div class="lock-icon-inner">
+        <svg class="lock-svg" width="52" height="52" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="11" width="18" height="11" rx="2" stroke="#00FFAA" stroke-width="1.5" fill="rgba(0,255,170,.06)"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#00FFAA" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="16" r="1.5" fill="#00FFAA"/>
+          <line x1="12" y1="17.5" x2="12" y2="19.5" stroke="#00FFAA" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="glitch-wrap fade-2">
+      <span class="glitch-num">404</span>
+    </div>
+
+    <div class="flex flex-col items-center gap-4 fade-3">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        Přístup odmítnut
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold leading-tight">
+        Nastala chyba<br/><span class="grad">nebo je stránka ve vývoji.</span>
+      </h1>
+      <p class="text-sm sm:text-base max-w-md leading-relaxed" style="color:rgba(255,255,255,.48)">
+        Omlouváme se — stránka, kterou hledáš, momentálně není dostupná. Pracujeme na tom, brzy tady něco bude.
+      </p>
+    </div>
+
+    <div class="terminal fade-4">
+      <div class="t-header">
+        <span class="t-dot" style="background:#ff5f57"></span>
+        <span class="t-dot" style="background:#febc2e"></span>
+        <span class="t-dot" style="background:#28c840"></span>
+        <span class="font-mono text-xs ml-2" style="color:rgba(255,255,255,.25)">bitcore — terminal v1.0</span>
+      </div>
+      <div class="t-line"><span class="t-pr">$</span><span class="t-cmd">ping <span id="req-path">/unknown</span></span></div>
+      <div class="t-line"><span class="t-pr">&nbsp;</span><span class="t-err">Request timeout — host unreachable</span></div>
+      <div class="t-line"><span class="t-pr">$</span><span class="t-cmd">status --check page</span></div>
+      <div class="t-line"><span class="t-pr">&nbsp;</span><span class="t-warn">&#9888; STATUS: under construction</span></div>
+      <div class="t-line"><span class="t-pr">$</span><span class="t-cmd">monitor --interval 10s</span></div>
+      <div class="t-line"><span class="t-pr">&nbsp;</span><span class="t-ok">&#10003; Monitoring started — checking availability…</span></div>
+      <div class="t-line"><span class="t-pr">$</span><span class="cursor"></span></div>
+    </div>
+
+    <div class="fade-5">
+      <a href="mailto:bitcore.devv@gmail.com" class="btn-s">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Nahlásit problém
+      </a>
+    </div>
+
+    <div class="fade-5 flex items-center gap-2">
+      <span id="poll-dot" class="poll-dot"></span>
+      <p id="poll-status" class="countdown">Kontroluji dostupnost stránky každých 10s…</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ASK POPUP -->
+<div id="ask-popup" class="modal-overlay">
+  <div class="modal-box mbox-ask">
+    <div class="mbar mbar-ask"></div>
+    <div class="micon micon-ask">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFD060" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 8v4"/>
+        <circle cx="12" cy="16" r=".5" fill="#FFD060"/>
+      </svg>
+    </div>
+    <div class="mlabel mlabel-ask">Stránka nedostupná</div>
+    <h2 class="mtitle">Přesměrovat na hlavní stránku?</h2>
+    <p class="mdesc">Tato stránka zatím nefunguje. Chceš zkusit přejít na hlavní stránku BitCore?</p>
+    <div class="mbtns">
+      <button class="mbtn-no" onclick="onAskNo()">Ne, zůstat zde</button>
+      <button class="mbtn-yes" onclick="onAskYes()">Ano, přesměrovat</button>
+    </div>
+  </div>
+</div>
+
+<!-- GO POPUP -->
+<div id="go-popup" class="modal-overlay">
+  <div class="modal-box mbox-go">
+    <div class="mbar mbar-go"></div>
+    <div class="micon micon-go">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00FFAA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <div class="mlabel mlabel-go">Stránka je online</div>
+    <h2 class="mtitle">Přesměrovávám…</h2>
+    <p class="mdesc">Stránka je nyní dostupná. Automaticky tě přesměruji za <span id="popup-timer" class="popup-num">3</span>s.</p>
+    <div class="prog-track">
+      <div id="prog-fill" class="prog-fill"></div>
+    </div>
+    <button class="mbtn-go" onclick="doRedirect()">
+      Přejít hned
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="relative z-10 border-t border-white/[0.05]">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <div class="w-7 h-7 rounded-lg flex items-center justify-center font-mono text-[10px] font-bold" style="background:rgba(0,255,170,.1);border:1px solid rgba(0,255,170,.2);color:#00FFAA">BC</div>
+      <span class="text-xs" style="color:rgba(255,255,255,.32)">&#169; <span id="yr"></span> BitCore &#8212; Adam Klorus &amp; Ondřej Douda</span>
+    </div>
+    <a href="mailto:bitcore.devv@gmail.com" class="text-xs font-mono" style="color:rgba(255,255,255,.28)" onmouseover="this.style.color='#00FFAA'" onmouseout="this.style.color='rgba(255,255,255,.28)'">bitcore.devv@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+var originalPath   = window.location.pathname || "/unknown";
+var pathEl         = document.getElementById("req-path");
+if (pathEl) pathEl.textContent = originalPath;
+
+var pollDot        = document.getElementById("poll-dot");
+var pollStatus     = document.getElementById("poll-status");
+var failCount      = 0;
+var askShown       = false;
+var pollingMain    = false;
+var redirectTarget = originalPath;
+var pollInterval   = null;
+var countdown      = null;
+
+function setDot(color, glow) {
+  pollDot.style.background = color;
+  pollDot.style.boxShadow  = glow ? ("0 0 6px " + color) : "none";
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add("open");
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove("open");
+}
+
+function checkPage() {
+  setDot("rgba(0,255,170,.5)", true);
+  fetch(redirectTarget, { method: "HEAD", cache: "no-store" })
+    .then(function(res) {
+      if (res.ok) {
+        setDot("#00FFAA", true);
+        clearInterval(pollInterval);
+        pollStatus.textContent = "Stránka je dostupná — připravuji přesměrování…";
+        if (askShown) closeModal("ask-popup");
+        showGoPopup();
+      } else {
+        throw new Error("not ok");
+      }
+    })
+    .catch(function() {
+      setDot("rgba(255,255,255,.2)", false);
+      failCount++;
+      if (!pollingMain) {
+        pollStatus.textContent = "Stránka nedostupná — další pokus za 10s (pokus c." + failCount + ")";
+        if (failCount >= 2 && !askShown) {
+          askShown = true;
+          openModal("ask-popup");
+        }
+      } else {
+        pollStatus.textContent = "Hlavni stranka zatim nedostupna — zkousim znovu za 10s…";
+      }
+    });
+}
+
+function onAskNo() {
+  closeModal("ask-popup");
+  failCount = 0;
+  askShown  = false;
+  pollStatus.textContent = "Pokracuji v kontrole puvodni stranky…";
+}
+
+function onAskYes() {
+  closeModal("ask-popup");
+  pollingMain    = true;
+  redirectTarget = "index.html";
+  failCount      = 0;
+  pollStatus.textContent = "Zkousim presmerovat na hlavni stranku…";
+  checkPage();
+}
+
+function showGoPopup() {
+  openModal("go-popup");
+  var secs    = 3;
+  var timerEl = document.getElementById("popup-timer");
+  var fill    = document.getElementById("prog-fill");
+  setTimeout(function() { fill.style.width = "100%"; }, 50);
+  countdown = setInterval(function() {
+    secs--;
+    if (timerEl) timerEl.textContent = secs;
+    if (secs <= 0) {
+      clearInterval(countdown);
+      doRedirect();
+    }
+  }, 1000);
+}
+
+function doRedirect() {
+  clearInterval(countdown);
+  window.location.href = redirectTarget;
+}
+
+checkPage();
+pollInterval = setInterval(checkPage, 10000);
+</script>
+</body>
+</html>
